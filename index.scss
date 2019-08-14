@@ -1,0 +1,95 @@
+$contoller-height: 110px;
+$play-area-height: 500px;
+$play-area-width: 350px;
+
+body {
+	position: absolute;
+	text-align: center;
+	font-size: 1.3em;
+	font-family: 'Raleway', Arial, Helvetica, sans-serif;
+	width: 100vw;
+	height: 100%;
+	height: calc(var(--vh, 1vh) * 100);
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	height: calc(100% - #{$contoller-height});
+	width: 100vw;
+	background: white;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+#play-area {
+	position: absolute;
+	height: $play-area-height;
+	width: $play-area-width;
+	transform: translate(calc(100vw / 2 - (#{$play-area-width} / 2)), 0%);
+	bottom: 15px;
+	background: #020000;
+	color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	overflow: hidden;
+}
+
+#control-target {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+}
+
+.controller-footer {
+	position: absolute;
+	height: $contoller-height;
+	width: 100%;
+	background: white;
+	color: white;
+	bottom: 0px;
+}
+
+.control-grid {
+	display: grid;
+	height: 100%;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+}
+
+#left-joystick {
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+#trigger {
+	grid-area: 1 / 2 / 2 / 3;
+	background: #f00000;
+	opacity: 0.5;
+	height: 97px;
+	width: 97px;
+	border-radius: 50%;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	border: #020000 2px solid;
+}
+.fired {
+	opacity: 0.8 !important;
+}
+
+.shot-div {
+	height: 50px !important;
+	width: 50px !important;
+	margin: 0px;
+	padding: 0xp;
+	position: absolute;
+}
+.shot {
+	margin: 0px;
+	padding: 0px;
+	stroke: red;
+	stroke-width: 4;
+}
+
+@media only screen and (min-width: 500px) {
+}

@@ -1,0 +1,43 @@
+{
+	"name": "floatingheads",
+	"version": "1.0.0",
+	"description": "Floating head space game.",
+	"main": "index.js",
+	"scripts": {
+		"start": "webpack-dev-server --open --config webpack.dev.js",
+		"build": "webpack --config webpack.prod.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Alavas/floatingheads.git"
+	},
+	"author": "Justin Savala",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Alavas/floatingheads/issues"
+	},
+	"homepage": "https://github.com/Alavas/floatingheads#readme",
+	"devDependencies": {
+		"@babel/core": "^7.5.5",
+		"@babel/plugin-transform-runtime": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
+		"babel-loader": "^8.0.6",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"extract-text-webpack-plugin": "^4.0.0-beta.0",
+		"fibers": "^3.1.1",
+		"jshint": "^2.10.2",
+		"jshint-loader": "^0.8.4",
+		"webpack": "^4.39.1",
+		"webpack-cli": "^3.3.6",
+		"webpack-dev-server": "^3.7.2",
+		"webpack-merge": "^4.2.1"
+	},
+	"dependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-react-app": "^3.1.2",
+		"es6-promisify": "^6.0.1",
+		"nipplejs": "^0.8.2"
+	}
+}

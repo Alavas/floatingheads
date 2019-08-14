@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Floating Heads</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Portfolio site for Justin Savala." />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<link rel="manifest" href="manifest.json" />
+		<link rel="apple-touch-icon" href="icon.png" />
+		<link href="index.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="container">
+			<div id="play-area">
+				<div id="control-target">
+					<svg height="50" width="50">
+						<polygon
+							points="0,0 0,50 50,25"
+							style="fill:green;stroke:green;stroke-width:1"
+						/>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<footer class="controller-footer">
+			<div class="control-grid">
+				<div id="left-joystick"></div>
+				<div id="trigger"></div>
+			</div>
+		</footer>
+		<script src="bundle.js"></script>
+	</body>
+</html>
