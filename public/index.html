@@ -14,15 +14,23 @@
 
 	<body>
 		<div class="container">
+			<form id="peer-id-form">
+				<input id="peer-id"></input>
+				<input type="submit"></input>
+			</form>
 			<div id="play-area">
-				<div id="control-target">
-					<svg height="50" width="50">
-						<polygon
-							points="0,0 0,50 50,25"
-							style="fill:green;stroke:green;stroke-width:1"
-						/>
-					</svg>
-				</div>
+				<ul id="shots">
+					<li>Shots Left</li>
+					<li>10</li>
+				</ul>
+				<ul id="health">
+					<li>Player</li>
+					<li>100</li>
+				</ul>
+				<ul id="opponent-health">
+					<li>Opponent</li>
+					<li>100</li>
+				</ul>
 			</div>
 		</div>
 		<footer class="controller-footer">
@@ -32,5 +40,6 @@
 			</div>
 		</footer>
 		<script src="bundle.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
 	</body>
 </html>

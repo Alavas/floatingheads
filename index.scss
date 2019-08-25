@@ -35,16 +35,18 @@ body {
 	overflow: hidden;
 }
 
-#control-target {
+.control-target {
 	position: absolute;
-	width: 50px;
-	height: 50px;
+	width: 1px; //50px
+	height: 1px; //50px
+	overflow: visible;
 }
 
 .controller-footer {
 	position: absolute;
 	height: $contoller-height;
 	width: 100%;
+	max-width: 500px;
 	background: white;
 	color: white;
 	bottom: 0px;
@@ -78,8 +80,8 @@ body {
 }
 
 .shot-div {
-	height: 50px !important;
-	width: 50px !important;
+	height: 1px !important;
+	width: 1px !important;
 	margin: 0px;
 	padding: 0xp;
 	position: absolute;
@@ -88,7 +90,38 @@ body {
 	margin: 0px;
 	padding: 0px;
 	stroke: red;
-	stroke-width: 4;
+	stroke-width: 3;
+}
+#shots {
+	z-index: 999;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	font-size: 0.75em;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+#health {
+	z-index: 999;
+	position: absolute;
+	top: 5px;
+	left: calc(#{$play-area-width} / 2);
+	font-size: 0.75em;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	transform: translate(-50%);
+}
+#opponent-health {
+	z-index: 999;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 0.75em;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
 }
 
 @media only screen and (min-width: 500px) {
