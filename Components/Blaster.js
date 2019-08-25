@@ -38,9 +38,6 @@ class Blaster {
 		this._playAreaWidth = ship.playAreaWidth + 50
 	}
 	fire(target, player) {
-		this.move(target, player)
-	}
-	move(target, player) {
 		this._x = this._x + parseFloat((Math.cos(this._radians) * 5).toFixed(2))
 		this._y = this._y + parseFloat((Math.sin(this._radians) * 5).toFixed(2))
 		this._base.style.left = `${this._x}px`
@@ -77,7 +74,7 @@ class Blaster {
 			this.remove()
 			return
 		}
-		requestAnimationFrame(() => this.move(target, player))
+		requestAnimationFrame(() => this.fire(target, player))
 	}
 	remove() {
 		const playArea = document.getElementById('play-area')

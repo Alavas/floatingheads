@@ -1,1 +1,12 @@
+# dependencies
 node_modules
+
+# development
+.cache
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

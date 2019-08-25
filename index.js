@@ -1,12 +1,15 @@
-require('babel-polyfill')
+require('./index.scss')
 const joystick = require('nipplejs')
-const Ship = require('./Ship')
+const Ship = require('./Components/Ship')
 const _ = require('lodash')
+
+//Global variables.
 var connection
 var opponentShip
 var playerShip
 var isPlayerOne = true
 
+//Wait until the peerjs file has been loaded.
 window.addEventListener('load', () => {
 	const vh = window.innerHeight * 0.01
 	document.documentElement.style.setProperty('--vh', `${vh}px`)
@@ -35,7 +38,9 @@ window.addEventListener('load', () => {
 			return Reflect.get(target, prop)
 		},
 		set: (target, prop, value) => {
-			console.log({ type: 'set', target, prop, value })
+			if (prop === 'health') {
+				console.log({ type: 'set', target, prop, value })
+			}
 			return Reflect.set(target, prop, value)
 		}
 	})
@@ -59,7 +64,9 @@ window.addEventListener('load', () => {
 			return Reflect.get(target, prop)
 		},
 		set: (target, prop, value) => {
-			console.log({ type: 'set', target, prop, value })
+			if (prop === 'health') {
+				console.log({ type: 'set', target, prop, value })
+			}
 			return Reflect.set(target, prop, value)
 		}
 	})
