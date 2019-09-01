@@ -17,12 +17,16 @@
 	},
 	"homepage": "https://github.com/Alavas/floatingheads#readme",
 	"devDependencies": {
+		"@vue/component-compiler-utils": "^3.0.0",
 		"parcel-bundler": "^1.12.3",
-		"sass": "^1.22.10"
+		"sass": "^1.22.10",
+		"vue-template-compiler": "^2.6.10"
 	},
 	"dependencies": {
 		"lodash": "^4.17.15",
 		"nipplejs": "^0.8.2",
-		"peerjs": "^1.0.2"
+		"peerjs": "^1.0.3",
+		"vue": "^2.6.10",
+		"vue-hot-reload-api": "^2.3.3"
 	}
 }

@@ -1,8 +1,12 @@
 # dependencies
-node_modules
+/node_modules
 
 # development
-.cache
+/.cache
+/.vscode
+
+#Production
+/dist
 
 # misc
 .DS_Store

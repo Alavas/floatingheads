@@ -1,27 +1,30 @@
 const Blaster = require('./Blaster')
+const PlayerOneShip = require('../Assets/PlayerOneShip.svg')
+const PlayerTwoShip = require('../Assets/PlayerTwoShip.svg')
+const EngineFlame = require('../Assets/EngineFlame.svg')
+const wOffset = 40
+const hOffset = 40
 
 class Ship {
 	constructor(state, player) {
 		this._state = state
 		const playArea = document.getElementById('play-area')
 		this._ship = document.createElement('div')
+		const target = document.createElement('div')
+		target.setAttribute('class', 'target-zone')
+		this._ship.appendChild(target)
 		this._ship.setAttribute('class', 'control-target')
-		const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-		svg.setAttributeNS(null, 'height', '1')
-		svg.setAttributeNS(null, 'width', '1')
-		svg.setAttributeNS(null, 'style', 'overflow: visible;display:block;')
-		const polygon = document.createElementNS(
-			'http://www.w3.org/2000/svg',
-			'polygon'
+		const shipBody = document.createElement('img')
+		shipBody.setAttribute(
+			'src',
+			state.id === 'playerOne' ? PlayerOneShip : PlayerTwoShip
 		)
-		polygon.setAttributeNS(null, 'points', '-25,-25 -25,25 25,0')
-		polygon.setAttributeNS(
-			null,
-			'style',
-			`fill:${state.color};stroke:${state.color};stroke-width:1`
-		)
-		svg.appendChild(polygon)
-		this._ship.appendChild(svg)
+		shipBody.setAttribute('class', 'ship-body')
+		this._ship.appendChild(shipBody)
+		this._flame = document.createElement('img')
+		this._flame.setAttribute('src', EngineFlame)
+		this._flame.setAttribute('class', 'ship-flame')
+		this._ship.appendChild(this._flame)
 		playArea.appendChild(this._ship)
 		this._ship.style.bottom = `${this._state.bottom}px`
 		this._ship.style.left = `${this._state.left}px`
@@ -32,11 +35,12 @@ class Ship {
 	move(state) {
 		this._ship.style.transform = `rotate(-${state.degrees}deg)`
 		if (state.rawDistance > 25) {
+			this._flame.style.visibility = 'visible'
 			const x = (Math.cos(state.radians) * state.distance).toFixed(2)
 			const y = (Math.sin(state.radians) * state.distance).toFixed(2)
 			state.left = state.left + parseFloat(x)
 			state.bottom = state.bottom + parseFloat(y)
-			if (state.left > state.playAreaWidth) {
+			if (state.left > state.playAreaWidth + wOffset) {
 				state = Object.assign(state, {
 					bottom:
 						state.bottom - Math.tan(state.radians) * state.playAreaWidth,
@@ -46,10 +50,10 @@ class Ship {
 				state = Object.assign(state, {
 					bottom:
 						state.bottom + Math.tan(state.radians) * state.playAreaWidth,
-					left: state.playAreaWidth
+					left: state.playAreaWidth + wOffset
 				})
 			}
-			if (state.bottom > state.playAreaHeight) {
+			if (state.bottom > state.playAreaHeight + hOffset) {
 				state = Object.assign(state, {
 					left:
 						state.left - Math.tan(state.cRadians) * state.playAreaHeight,
@@ -59,17 +63,19 @@ class Ship {
 				state = Object.assign(state, {
 					left:
 						state.left + Math.tan(state.cRadians) * state.playAreaHeight,
-					bottom: state.playAreaHeight
+					bottom: state.playAreaHeight + hOffset
 				})
 			}
 			this._ship.style.left = `${state.left}px`
 			this._ship.style.bottom = `${state.bottom}px`
+		} else if (state.rawDistance < 25) {
+			this._flame.style.visibility = 'hidden'
 		}
 	}
-	fire({ shooter, target }) {
+	fire({ shooter, target, gameState }) {
 		if (this._player) {
 			const blaster = new Blaster(shooter)
-			blaster.fire(target, this._player)
+			blaster.fire(target, this._player, gameState)
 			shooter = Object.assign(shooter, { shots: shooter.shots - 1 })
 			const shots = document.getElementById('shots').lastElementChild
 			shots.innerHTML = shooter.shots
@@ -79,7 +85,7 @@ class Ship {
 			}, 3000)
 		} else {
 			const blaster = new Blaster(shooter)
-			blaster.fire(target, this._player)
+			blaster.fire(target, this._player, gameState)
 			shooter = Object.assign(shooter, { shots: shooter.shots - 1 })
 		}
 	}

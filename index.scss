@@ -7,16 +7,18 @@ body {
 	text-align: center;
 	font-size: 1.3em;
 	font-family: 'Raleway', Arial, Helvetica, sans-serif;
-	width: 100vw;
+	width: 100%;
+	width: calc(var(--vw, 1vw) * 100);
 	height: 100%;
 	height: calc(var(--vh, 1vh) * 100);
 	padding: 0;
 	margin: 0;
+	overflow-x: hidden;
 }
 
 .container {
-	height: calc(100% - #{$contoller-height});
-	width: 100vw;
+	height: calc(100vh - #{$contoller-height});
+	width: 100%;
 	background: white;
 	margin-left: auto;
 	margin-right: auto;
@@ -31,7 +33,8 @@ body {
 	bottom: 15px;
 	background: #020000;
 	color: white;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+		0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 	overflow: hidden;
 }
 
@@ -40,16 +43,33 @@ body {
 	width: 1px; //50px
 	height: 1px; //50px
 	overflow: visible;
+	display: block;
+	.ship-body {
+		transform: translate(-50%, -50%);
+	}
+	.target-zone {
+		position: absolute;
+		height: 40px;
+		width: 50px;
+		transform: translate(-85%, -50%);
+	}
+	.ship-flame {
+		visibility: hidden;
+		position: absolute;
+		left: -85px;
+		top: -12px;
+	}
 }
 
 .controller-footer {
 	position: absolute;
 	height: $contoller-height;
 	width: 100%;
-	max-width: 500px;
 	background: white;
 	color: white;
 	bottom: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
 .control-grid {
@@ -60,6 +80,7 @@ body {
 }
 
 #left-joystick {
+	z-index: 1;
 	grid-area: 1 / 1 / 2 / 2;
 }
 
@@ -85,13 +106,21 @@ body {
 	margin: 0px;
 	padding: 0xp;
 	position: absolute;
+	.blaster-zone {
+		position: absolute;
+		height: 85px;
+		width: 30px;
+		transform: translate(-40%, -50%);
+	}
 }
+
 .shot {
 	margin: 0px;
 	padding: 0px;
 	stroke: red;
 	stroke-width: 2.5;
 }
+
 #shots {
 	z-index: 999;
 	position: absolute;
