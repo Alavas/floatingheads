@@ -4,7 +4,8 @@
 	"description": "Floating head space game.",
 	"main": "index.js",
 	"scripts": {
-		"start": "parcel ./public/index.html"
+		"start": "parcel ./public/index.html",
+		"build": "parcel build ./public/index.html"
 	},
 	"repository": {
 		"type": "git",
